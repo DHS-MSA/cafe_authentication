@@ -47,7 +47,8 @@ jobs:
         username: ${{ secrets.NAS_USERNAME }}
         password: ${{ secrets.NAS_PASSWORD }}
         script: |
+          whoami
           docker rm -f member-api
           docker pull ${{ secrets.DOCKER_REPO }}/member-api
-          docker-compose up -d
+          docker run -d --name member-api --restart=unless-stopped -p 8080:8080 gospel306/member-api:latest
           docker system prune
