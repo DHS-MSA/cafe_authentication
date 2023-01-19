@@ -49,7 +49,5 @@ jobs:
         script: |
           whoami
           pwd
-          docker rm -f member-api
-          docker pull ${{ secrets.DOCKER_REPO }}/member-api
-          docker run -d --name member-api --restart=unless-stopped -p 8080:8080 gospel306/member-api:latest
-          docker system prune
+          cd /volume2/docker/members
+          ./member.sh
