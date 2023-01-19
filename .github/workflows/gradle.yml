@@ -47,7 +47,6 @@ jobs:
         username: ${{ secrets.NAS_USERNAME }}
         password: ${{ secrets.NAS_PASSWORD }}
         script: |
-          whoami
-          pwd
-          cd /volume2/docker/members
-          ./member.sh
+          docker version
+          sudo wget -qO- https://get.docker.com/ | sh
+          docker version
