@@ -39,3 +39,15 @@ jobs:
         docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
         docker build -t ${{ secrets.DOCKER_REPO }}/member-api .
         docker push ${{ secrets.DOCKER_REPO }}/member-api
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.NAS_HOST }}
+        port: ${{ secrets.NAS_PORT }}
+        username: ${{ secrets.NAS_USERNAME }}
+        password: ${{ secrets.NAS_PASSWORD }}
+        script: |
+          docker rm -f member-api
+          docker pull ${{ secrets.DOCKER_REPO }}/member-api
+          docker-compose up -d
+          docker system prune
