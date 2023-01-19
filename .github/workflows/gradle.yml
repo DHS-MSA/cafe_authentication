@@ -47,6 +47,7 @@ jobs:
         username: ${{ secrets.NAS_USERNAME }}
         password: ${{ secrets.NAS_PASSWORD }}
         script: |
-          export PATH=/opt/bin:/opt/sbin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/syno/sbin:/usr/syno/bin:/usr/local/sbin:/usr/local/bin
-          echo $PATH
-          docker ps
+          export PATH=${{ secrets.SHELL_PATH }}
+          docker rm -f member-api
+          docker pull gospel306/member-api
+          docker run -d --name member-api --restart=unless-stopped -p 8080:8080 gospel306/member-api:latest
