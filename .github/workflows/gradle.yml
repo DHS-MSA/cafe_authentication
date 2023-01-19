@@ -47,6 +47,4 @@ jobs:
         username: ${{ secrets.NAS_USERNAME }}
         password: ${{ secrets.NAS_PASSWORD }}
         script: |
-          docker version
-          sudo wget -qO- https://get.docker.com/ | sh
-          docker version
+          type docker
