@@ -29,7 +29,6 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
     - name: make application.yml
-      uses: action/checkout@v3
       run: |
         touch ./src/main/resources/application.yml
         echo "${{ env.APPLICATION }}" > ./src/main/resources/application.yml
