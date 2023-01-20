@@ -28,10 +28,10 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
-    - name: make application.yml
+    - name: make application-nas.yml
       run: |
-        touch ./src/main/resources/application.yml
-        echo "${{ secrets.APPLICATION }}" > ./src/main/resources/application.yml
+        touch ./src/main/resources/application-nas.yml
+        echo "${{ secrets.APPLICATION }}" > ./src/main/resources/application-nas.yml
     - name: Run chmod to make gradlew executable
       run: chmod +x ./gradlew
     - name: Build with Gradle
