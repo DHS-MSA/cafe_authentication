@@ -31,7 +31,7 @@ jobs:
     - name: make application.yml
       run: |
         touch ./src/main/resources/application.yml
-        echo "${{ env.APPLICATION }}" > ./src/main/resources/application.yml
+        echo "${{ secrets.APPLICATION }}" > ./src/main/resources/application.yml
     - name: Run chmod to make gradlew executable
       run: chmod +x ./gradlew
     - name: Build with Gradle
