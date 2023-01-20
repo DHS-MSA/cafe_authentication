@@ -28,6 +28,15 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
+    - name: make application.yml
+      uses: action/checkout@v3
+      run: |
+        touch ./src/main/resources/application.yml
+        echo "${{ env.APPLICATION }}" > ./src/main/resources/application.yml
+    - uses: action/upload-artifact@v3
+      with:
+        name: application.yml
+        path: ./src/main/resources/application.yml
     - name: Run chmod to make gradlew executable
       run: chmod +x ./gradlew
     - name: Build with Gradle
